@@ -1,0 +1,5 @@
+name: Sticky Nav
+type: module
+description: 'Module to make navigation on the website sticky when you scroll down the page. This project is sponsored by Haymarket Media Group.'
+core: 8.x
+configure: admin/config/user-interface/stickynav

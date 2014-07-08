@@ -1,0 +1,7 @@
+stickynav.set_admin:
+  path: '/admin/config/user-interface/stickynav'
+  defaults:
+    _form: '\Drupal\stickynav\Form\StickynavSettingsForm'
+    _title: 'Configure Stickynav'
+  requirements:
+    _permission: 'administer stickynav'

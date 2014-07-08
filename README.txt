@@ -4,7 +4,7 @@ Reviewer:
 
 Install
 -------
-1) Put the module directory into sites/all/modules
+1) Put the module directory into modules
 folder in your Drupal installation.
 
 2) Enable the module in admin/modules or using drush

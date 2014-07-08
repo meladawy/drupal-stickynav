@@ -6,27 +6,24 @@
  */
 
 /**
- * Implements hook_init().
+ * Implements hook_page_build().
  */
-function stickynav_init() {
-  global $user, $theme;
-  // Check if user has an exclusion role.
-  $excluded_roles = array_filter(variable_get('stickynav-roles-' . $theme, array()));
-  if (array_intersect_key($excluded_roles, $user->roles)) {
-    return;
-  }
-  $selector = variable_get('stickynav-selector-' . $theme, '');
-  // Will only add the sticky nav assets if the theme and selector are set.
-  if (variable_get('stickynav-enabled-' . $theme, FALSE) && trim($selector)) {
-    drupal_add_css(drupal_get_path('module', 'stickynav') .
-      '/css/stickynav.css');
-    drupal_add_js(drupal_get_path('module', 'stickynav') . '/js/stickynav.js');
-    $settings = array(
-      'stickynav' => array(
-        'selector' => check_plain($selector),
+function stickynav_page_build(&$page) {
+  global $theme;
+  $config = Drupal::config('stickynav.settings');
+  $enabled = $config->get('stickynav-enabled-' . $theme);
+  $selector = $config->get('stickynav-selector-' . $theme);
+  if ($enabled && trim($selector)) {
+    $page['#attached']['js'][] = array(
+      'type' => 'setting',
+      'data' => array(
+        'stickynav' => array(
+          'selector' => $selector,
+        )
       ),
     );
-    drupal_add_js($settings, 'setting');
+    $page['#attached']['js'][] = drupal_get_path('module', 'stickynav') . '/js/stickynav.js';
+    $page['#attached']['css'][] = drupal_get_path('module', 'stickynav') . '/css/stickynav.css';
   }
 }
 
@@ -40,20 +37,4 @@ function stickynav_permission() {
       'description' => t('Permission to activate and manage Sticky Nav.'),
     ),
   );
-}
-
-/**
- * Implements hook_menu().
- */
-function stickynav_menu() {
-  $items['admin/config/user-interface/stickynav'] = array(
-    'title' => 'Sticky Nav Settings',
-    'description' => 'Settings of sticky navigation on your website',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('stickynav_admin_form'),
-    'access callback' => 'user_access',
-    'access arguments' => array('administer stickynav'),
-    'file' => 'admin/stickynav.admin.inc',
-  );
-  return $items;
 }
