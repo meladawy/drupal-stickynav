@@ -3,6 +3,7 @@
  * @file
  * Contains \Drupal\stickynav\Form\StickynavSettingsForm.
  */
+
 namespace Drupal\stickynav\Form;
 
 use \Drupal\Core\Form\ConfigFormBase;
@@ -18,7 +19,7 @@ class StickynavSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormID() {
+  public function getFormId() {
     return 'stickynav_config_form';
   }
 
@@ -62,7 +63,7 @@ class StickynavSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => t('Offset Selector'),
       '#description' => t('Element to use as an offset. For multiple elements on the page separate them with a comma. Use jquery format.'),
-      '#default_value' =>  $config->get('offset') ? $config->get('offset') : '',
+      '#default_value' => $config->get('offset') ? $config->get('offset') : '',
       '#states' => $states,
     );
 
@@ -110,4 +111,5 @@ class StickynavSettingsForm extends ConfigFormBase {
     $form_state->setRedirect('stickynav.set_admin');
     parent::submitForm($form, $form_state);
   }
+
 }

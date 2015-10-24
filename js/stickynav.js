@@ -1,3 +1,7 @@
+/**
+ * @file
+ * COntains JavaScript making the eleements stick.
+ */
 (function($, Drupal, drupalSettings) {
   "use strict";
 
@@ -15,7 +19,7 @@
     originalPadding: 0,
     attach: function (context) {
       var selector = drupalSettings.stickynav.selector;
-      //only getting the first elmenet in the dom
+      // Only getting the first elmenet in the dom.
       var $menu = $(selector).once('stickynav').eq(0);
       var offset = 0;
       if ($menu.length) {
@@ -29,7 +33,7 @@
           offset += $(this).outerHeight();
         });
         Drupal.behaviors.stickynav.breakpoint = $menu.offset().top - offset;
-        //we need to compensate the element so that the content does not jump up.
+        // We need to compensate the element so that the content does not jump up.
         Drupal.behaviors.stickynav.compensation = $menu.outerHeight();
         $(window).scroll(function () {
           if ($(window).scrollTop() > Drupal.behaviors.stickynav.breakpoint) {
@@ -49,4 +53,3 @@
     }
   };
 })(jQuery, Drupal, drupalSettings);
-

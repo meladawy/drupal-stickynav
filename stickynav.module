@@ -1,8 +1,7 @@
 <?php
 /**
  * @file
- * Make a menu or some other element on the page stick on top when you scroll
- * down
+ * Make a menu or some other element on the page stick on top when you scroll.
  */
 
 /**

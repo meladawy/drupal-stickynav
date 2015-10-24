@@ -5,12 +5,14 @@
  * Contains \Drupal\stickynav\Controller\StickynavController.
  */
 
-
 namespace Drupal\stickynav\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 
+/**
+ * Returns responses for stickynav module routes.
+ */
 class StickynavController extends ControllerBase {
   /**
    * Lists links to configuration for stickynav per theme.
@@ -49,4 +51,5 @@ class StickynavController extends ControllerBase {
 
     return $build;
   }
+  
 }
