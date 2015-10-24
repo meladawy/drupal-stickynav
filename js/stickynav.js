@@ -3,7 +3,7 @@
  * Contains JavaScript making the eleements stick.
  */
 
-(function( $, Drupal, drupalSettings) {
+(function ($, Drupal, drupalSettings) {
   "use strict";
 
   /**
