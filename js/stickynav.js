@@ -3,7 +3,7 @@
  * Contains JavaScript making the eleements stick.
  */
 
-(function($, Drupal, drupalSettings) {
+(function( $, Drupal, drupalSettings) {
   "use strict";
 
   /**
@@ -40,13 +40,13 @@
           if ($(window).scrollTop() > Drupal.behaviors.stickynav.breakpoint) {
             $menu.addClass('stickynav-active');
             if (offset) {
-              $menu.css({'top': offset + 'px'});
+              $menu.css({top: offset + 'px'});
             }
             $('body').css('padding-top', Drupal.behaviors.stickynav.compensation);
           }
           else {
             $menu.removeClass('stickynav-active');
-            $menu.css({'top': ''});
+            $menu.css({top: ''});
             $('body').css('padding-top', Drupal.behaviors.stickynav.originalPadding);
           }
         });
