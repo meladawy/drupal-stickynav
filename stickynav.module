@@ -6,35 +6,24 @@
  */
 
 /**
- * Implements hook_page_build().
+ * Implements hook_page_attachments().
  */
-function stickynav_page_build(&$page) {
-  global $theme;
-  $config = Drupal::config('stickynav.settings');
-  $enabled = $config->get('stickynav-enabled-' . $theme);
-  $selector = $config->get('stickynav-selector-' . $theme);
-  if ($enabled && trim($selector)) {
-    $page['#attached']['js'][] = array(
-      'type' => 'setting',
-      'data' => array(
-        'stickynav' => array(
-          'selector' => $selector,
-        )
+function stickynav_page_attachments(array &$attachments) {
+  $theme = \Drupal::theme()->getActiveTheme();
+  $theme_name = $theme->getName();
+  $user = Drupal::currentUser();
+  $config = Drupal::config('stickynav.settings.' . $theme_name);
+  $enabled = $config->get('enabled');
+  $selector = $config->get('selector');
+  $excluded_roles = $config->get('roles');
+  if (!array_intersect($excluded_roles, $user->getRoles()) && $enabled && trim($selector)) {
+    $attachments['#attached']['library'][] = 'stickynav/stickynav';
+    $attachments['#attached']['drupalSettings']['stickynav'] = [
+      'selector' => $selector,
+      'offsets' => array(
+        'selector' => $config->get('offset'),
+        'custom_offset' => $config->get('custom_offset'),
       ),
-    );
-    $page['#attached']['js'][] = drupal_get_path('module', 'stickynav') . '/js/stickynav.js';
-    $page['#attached']['css'][] = drupal_get_path('module', 'stickynav') . '/css/stickynav.css';
+    ];
   }
-}
-
-/**
- * Implements hook_permission().
- */
-function stickynav_permission() {
-  return array(
-    'administer stickynav' => array(
-      'title' => t('Administer Sticky Nav'),
-      'description' => t('Permission to activate and manage Sticky Nav.'),
-    ),
-  );
 }
