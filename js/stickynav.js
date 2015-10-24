@@ -1,7 +1,8 @@
 /**
  * @file
- * COntains JavaScript making the eleements stick.
+ * Contains JavaScript making the eleements stick.
  */
+
 (function($, Drupal, drupalSettings) {
   "use strict";
 
