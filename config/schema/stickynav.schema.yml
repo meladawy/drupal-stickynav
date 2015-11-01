@@ -1,8 +1,7 @@
 # Schema for the configuration files of the stickynav module.
-
-forum.settings:
+stickynav.settings.*:
   type: config_object
-  label: 'Forum settings'
+  label: 'Sticky Nav settings'
   mapping:
     enabled:
       type: boolean
