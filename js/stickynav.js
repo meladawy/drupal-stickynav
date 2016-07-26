@@ -4,7 +4,7 @@
  */
 
 (function ($, Drupal, drupalSettings) {
-  "use strict";
+  'use strict';
 
   /**
    * Attach the stickiness to the element in selector.
