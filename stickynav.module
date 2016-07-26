@@ -15,7 +15,7 @@ function stickynav_page_attachments(array &$attachments) {
   $enabled = $config->get('enabled');
   $selector = $config->get('selector');
   $excluded_roles = $config->get('roles');
-  if (!array_intersect($excluded_roles, $user->getRoles()) && $enabled && trim($selector)) {
+  if ($enabled && trim($selector) && !array_intersect($excluded_roles, $user->getRoles())) {
     $attachments['#attached']['library'][] = 'stickynav/stickynav';
     $attachments['#attached']['drupalSettings']['stickynav'] = [
       'selector' => $selector,
