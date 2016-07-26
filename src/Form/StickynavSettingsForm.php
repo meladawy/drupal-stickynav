@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\stickynav\Form\StickynavSettingsForm.
- */
 
 namespace Drupal\stickynav\Form;
 

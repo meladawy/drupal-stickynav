@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\stickynav\Controller\StickynavController.
- */
-
 namespace Drupal\stickynav\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
