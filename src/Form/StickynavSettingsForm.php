@@ -102,6 +102,8 @@ class StickynavSettingsForm extends ConfigFormBase {
     $config
       ->set('enabled', $form_state->getValue('enabled'))
       ->set('selector', $form_state->getValue('selector'))
+      ->set('offset', $form_state->getValue('offset'))
+      ->set('custom_offset', $form_state->getValue('custom_offset'))
       ->set('roles', array_keys(array_filter($form_state->getValue('roles'))))
       ->save();
     $form_state->setRedirect('stickynav.set_admin');
