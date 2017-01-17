@@ -57,16 +57,16 @@ class StickynavSettingsForm extends ConfigFormBase {
 
     $form['offset'] = array(
       '#type' => 'textfield',
-      '#title' => t('Offset Selector'),
-      '#description' => t('Element to use as an offset. For multiple elements on the page separate them with a comma. Use jquery format.'),
+      '#title' => $this->t('Offset Selector'),
+      '#description' => $this->t('Element to use as an offset. For multiple elements on the page separate them with a comma. Use jquery format.'),
       '#default_value' => $config->get('offset') ? $config->get('offset') : '',
       '#states' => $states,
     );
 
     $form['custom_offset'] = array(
       '#type' => 'textfield',
-      '#title' => t('Custom offset'),
-      '#description' => t('Custom offset in pixels. This will be added to the elements offsets if they are set.'),
+      '#title' => $this->t('Custom offset'),
+      '#description' => $this->t('Custom offset in pixels. This will be added to the elements offsets if they are set.'),
       '#default_value' => $config->get('custom_offset') ? $config->get('custom_offset') : '',
       '#states' => $states,
     );
